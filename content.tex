@@ -63,7 +63,7 @@ $+Z_{s}$ &Telemetry  &    0.22 \\ \hline
 
  
 \subsection{Dimensioning of Heating Power}
-After the sizing of the radiator areas is performed using the hot case, the additional heating power, that might be required in the cold case, has to be determined. For that, we calculate the power that is actually evacuated in the cold case using the heat capacities in the cold case and the radiator sizes calculated before. From that, we reduce the power that is dissipated by the equipment in the hot case as listed in table \ref{tab:equipmentspecification}. This difference is the power that is lost and results in a continuous cooling, so this difference in power has to be added by heating to avoid further cooling. We assume that the additional heating power avoids the equipment to drop below $-5^{\circ}$C. Table lists the calculated evacuated power in this case, as well as the dissipated power in the hot case for each equipment and and the resulting required heating:
+After the sizing of the radiator areas is performed using the hot case, the additional heating power, that might be required in the cold case, has to be determined. For that, we calculate the power that is actually evacuated in the cold case using the heat capacities in the cold case and the radiator sizes calculated before. From that, we reduce the power that is dissipated by the equipment in the hot case as listed in table \ref{tab:equipmentspecification}. This difference is the power that is lost and results in a continuous cooling, so this difference in power has to be added by heating to avoid further cooling. We assume that the additional heating power avoids the equipment to drop below $-5^{\circ}$C, as defined in the cold case of the cube before Table lists the calculated evacuated power in this case, as well as the dissipated power in the hot case for each equipment and and the resulting required heating:
 
 \begin{table}[H]
 \centering
@@ -79,7 +79,13 @@ $+Z_{s}$ &Telemetry  &  0   & 40 & 40 \\ \hline
 \label{tab:arrangement}
 \end{table}
 
+\section{Thermal Calculations for SPOT}
+In order to test and verify our previous calculations, we simulate the thermal behaviour of our SPOT satellite using Thermica to proof that the satellite fulfills the requirements of staying within $-5^{\circ}$ and $40^{\circ}$. We used the geometric models in the hot case and in the cold case for the satellite SPOT4,  which were already provided. Since we have more information now about the satellites compared to the first simplified cube simulations, we also have to adapt several files throughout the simulation. 
 
+\subection{Nodal network}
+In thermica, interactions are described using the so called nodal network, where as an example the output of several simulation elements is linked to further simulation elements that need that data is input. Therefore, the nodal network gives an overview about the interactions of different simulation elemenets. In our case, the different equipments are assigned different node numbers, i.e. 3 to the $+Y_{s}$ side of the cube and thusd to the attitude control, 4 to the power supply side,  5 to the telemetry side and 6 to on-board computer. The $\pm X$ sides are left out since they are not considered in this thermical simulation as they are connected to the batteries and payload.
+
+\subsection{Radiative Phenomenon}  
 
 
 
