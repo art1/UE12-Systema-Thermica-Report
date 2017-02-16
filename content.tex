@@ -89,3 +89,21 @@ In thermica, interactions are described using the so called nodal network, where
 In the thermal simulation we consider the hot and the cold case, end of life and beginning of life. For setting up the simulation, several elements defining the mission, which depends on the case, the nodal descriptin, "Radiation", "Solar fluxes", "Planetary fluxes, "Skeleton" and finally "Solver" have to be connected within Thermica. However, we need to adapt several files before using the latter two elements in the simulation, so these are deactivated for the first run of the simulation.  
 The reason for that extra step is that the created file called "Spot.usr.nwk", which contains information about the radiative interactions of the several elements, assumes e.g. a radiator surface area of $1$ m$^{2}$ and other different values. However, to adapt the simulation to our case, we have to change these values in the file. In order to do so, one has to add the various values calculated above like the different fluxes for each radiator, heat capacities and dissipations. Once these changes are done, one can run the simulation with the last steps including the Thermica solver THERMOSOL.
 
+\section{Results}
+The results are shown in the figure \ref{fig:spothot} and describing the temperature for every node, i.e. side of the cube of SPOT, during the simulation for about 20 orbits. As one can see in the hot case, it is varified that the previous calculations of the radiator sizes avoid a heating above 40 degrees, since the temperatures converge towards that value over time. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{images/SPOT_hotcase_temperature.png}
+	\caption{Temperature of SPOT nodes in the hot case}
+	\label{fig:spothot}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{images/SPOT_coldcase_temperature.png}
+	\caption{Temperature of SPOT nodes in the cold case}
+	\label{fig:spothot}
+\end{figure}
+
+
+Also in the cold case, one can see of the systems is heated up as soon as it gets close to $-10^{\circ}$, and therefore further coolign is avoided.
