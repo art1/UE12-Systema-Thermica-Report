@@ -2,5 +2,27 @@
 
 
 %%%%%%%%%%%%%%%%% TASK 1 %%%
-\section{Image Processing for Earth Observation}
+\section{Thermal Dimensioning of SPOT Satellite Platform}
+
+After having investigated the corresponding fluxes for the applied orbit in the two different cases, as well as the rejection capacities for each side of a cube satellite, we use these results to determine the thermical distribution inside the satellite platform of SPOT. For this, we extend the cube model used before by assuming that it contains 4 different equipments inside, as well as 4 radiators outside for each equipment. The remaining 2 sides of the cube will have no radiators, since we assume that the batteries and the payload are connected to those sides. Within Thermica, we start by using the geometric models for the cold case, SPOT-BOL, and end of life, SPOT-EOL. 
+
+\subsection{Positioning of the equipment}
+The very first important step of the analysis is to determine the best places to put the equipment, i.e. on which side of the cube depending on the equipment's specification and the fluxes calculated before. These specifications are listed in table \ref{tab:equipmentspecification}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ | c| c|c|c|c|c|c|c| }
+\hline 
+&  \multicolumn{2}{|c|}{Nominal Mode} &  \multicolumn{2}{|c|}{Safe Mode} & & \multicolumn{2}{|c|}{Dissipated Power [W] }\\
+Function & Tmin & Tmax & Tmin & Tmax & Mass & nominal mode & safe mode  \\
+& \multicolumn{2}{|c|}{$^{\circ}$C} & \multicolumn{2}{|c|}{$^{\circ}$C} & kg &Operation/Stand-By &  \\  \hline
+
+Power Supply &-10   & 40  & -15&50  & 40  &  150 /50 & 20  \\ \hline
+On-board Computer &-10  & 40 &-15 &50 &5 &15 /10& 10 \\ \hline
+Attitude Control &-10  &40 & -15& 50&30 &110/50 &30  \\ \hline
+Telemetry &-10  &40 &-15 &50 &20 &70/0 & 0  \\ \hline
+\end{tabular}
+\caption{Parameter comparison ignoring the additional signals found by the MP algorithm}
+\label{tab:mp}
+\end{table}
 
