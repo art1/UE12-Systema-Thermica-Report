@@ -56,7 +56,22 @@ $+Z_{s}$ &Telemetry   \\ \hline
 \caption{Chosen arrangement of equipment}
 \label{tab:arrangement}
 \end{table}
+From this arrangement, we can relate the rejection capacities of the individual sides to the corresponding equipment. Also, we calculated the heat capacities of each equipment by multiplying the mass with the specific heat capacitance of $900\frac{\mathrm{K}}{\mathrm{kgK}}$.
 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | c| c|c|c|c|}
+\hline 
+Side & Equipment  & Rejection Capacity [$\frac{\mathrm{W}}{\mathrm{m}^{2}} $] &Mass of Equipment [kg] & Thermal Capacity [$\frac{\mathrm{K}}{\mathrm{K}}$]   \\ \hline
+$-Y_{s}$ & Power Supply & 303.6 & 40 &  36000   \\ \hline
+$-Z_{s}$ &On-board Computer&  242.5 & 5 & 4500 \\\hline
+$+Y_{s}$ &Attitude Control  &  303.6 & 20& 18000 \\ \hline
+$+Z_{s}$ &Telemetry & 325.5 & 20 &  18000 \\ \hline
+\end{tabular}
+\caption{Equipment with heat capacities and rejection capacities.}
+\label{tab:arrangement}
+\end{table} 
 
 \subsection{Sizing of Radiators}
 Once  the positions of the equipment are defined, we are able to size the radiators according to the power consumptions and heat capacities. The required area can be calculated using $A=\frac{P_{diss}}{Q_{s,i}}$, where $Q_{s}$ are the rejection capacities for the individual sides at the hot case and $P_{diss}$ the power that is dissipated by the equipment.
@@ -104,3 +119,25 @@ In thermica, interactions are described using the so called nodal network, where
 In the thermal simulation we consider the hot and the cold case, end of life and beginning of life. For setting up the simulation, several elements defining the mission, which depends on the case, the nodal descriptin, "Radiation", "Solar fluxes", "Planetary fluxes, "Skeleton" and finally "Solver" have to be connected within Thermica. However, we need to adapt several files before using the latter two elements in the simulation, so these are deactivated for the first run of the simulation.  
 The reason for that extra step is that the created file called "Spot.usr.nwk", which contains information about the radiative interactions of the several elements, assumes e.g. a radiator surface area of $1$ m$^{2}$ and other different values. However, to adapt the simulation to our case, we have to change these values in the file. In order to do so, one has to add the various values calculated above like the different fluxes for each radiator, heat capacities and dissipations. Once these changes are done, one can run the simulation with the last steps including the Thermica solver THERMOSOL.
 
+\section{Results}
+The results are shown in the figure \ref{fig:spothot} and describing the temperature for every node, i.e. side of the cube of SPOT, during the simulation for about 20 orbits. As one can see in the hot case, it is varified that the previous calculations of the radiator sizes avoid a heating above 40 degrees, since the temperatures converge towards that value over time. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{images/SPOT_hotcase_temperature.png}
+	\caption{Temperature of SPOT nodes in the hot case}
+	\label{fig:spothot}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{images/SPOT_coldcase_temperature.png}
+	\caption{Temperature of SPOT nodes in the cold case}
+	\label{fig:spothot}
+\end{figure}
+
+
+Also in the cold case, one can see of the systems is heated up as soon as it gets close to $-10^{\circ}$, and therefore further cooling is avoided.
+
+\section{Conclusion}
+In this report, we simulated the thermal behaviour of a simple sattelite using Thermica. In a first step, a simple cube was simulated in the hot case and cold case, or end of life and beginning of life. The different fluxes resulting from the Sun, Earth's albedo and the Infrared radiation from Earth were simulated for each side of the cube. Also, we calculated the heat rejection capacities of the cube for the two cases, hot and cold.
+In the second step of the simulation, we used these result to further simulate the thermal behaviour inside the satellite SPOT. In a first step, an optimized arrangement of several equipment elements was performed. In addition, the radiator sizes for each side of the satellite were calculated in order to prevent the equipment from overheating, while also the required heating power in the cold case resulting from that was obtained for each of the equipment. In a final simulation, it was verified that the specific requirements, i.e. the temperature range, is met by the chosen values for the radiator sizes and heating power. The whole simulation provided us a very interesting introduction into the use of Thermica and the way thermal analysis is performed.
