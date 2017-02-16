@@ -1,7 +1,22 @@
-\section{Introdution}
+\section{Introduction}
+Thermal Control Systems of satellites are one of the major subsystems that contribute and sustain the life of a spacecraft. Thus, this lab is focusing on the application of various techniques in order to analyse first a simple geometric figure and then a more complex structure, the SPOT satellite (SSO LEO at 800km height). In general, the most crucial phases during a mission occur during the beginning and the end of the spacecraft lifetime, further denoted as EOL respectively BOL, and during the Hot and the Cold Case of the orbit.\\
+To analyse these critical time frames, a Software developed by Airbus Defence \& Space, SYSTEMA, is used. SYSTEMA is a framework of different software packages, which include Thermica and Thermisol. These will be used in the further report to model, calculate and analyse the aforementioned geometric figures. \\In particular, the software breaks the analysis down into two main parts: the analysis of radiative phenomena during the orbits of the spacecraft and a nodal analysis based on a thermal equilibrium.
+
+\section{Rejection Capacity Calculation}
+\subsection{Geometric Model of a Cube in Thermica}
+The first step to a thermal analysis is the modelling of our geometric figure, since at first we will analyse radiating surfaces. As stated before, in this part only a simplified geometric model of the SPOT satellite is used to familiarise with and gain a basic understanding of Thermica/Thermisol.\\
+These simplified surfaces are supposed to be coated with aluminised SSM with an emissivity of 0.78 and an absorptivity of 0.15 at BOL and 0.19 at EOL (5 years).
+ 
+\subsection{Solar, planetary IR and Albedo Flux}
+After having obtained a geometric model, the mission parameters have to be defined. In particular, these parameter contain the trajectory as well as the kinematics of the previously defined geometric shape.\\
+To specify these parameters, Thermica offers the option to create a \textit{mission}, i.e. an orbit with specified parameters: orbit height of 830km, Sun-synchronous with the ascending node at 10:30 pm local time
 
 
-%%%%%%%%%%%%%%%%% TASK 1 %%%
+
+
+\subsection{Rejection Capacity}
+
+
 \section{Thermal Dimensioning of SPOT Satellite Platform}
 
 After having investigated the corresponding fluxes for the applied orbit in the two different cases, as well as the rejection capacities for each side of a cube satellite, we use these results to determine the thermical distribution inside the satellite platform of SPOT. For this, we extend the cube model used before by assuming that it contains 4 different equipments inside, as well as 4 radiators outside for each equipment. The remaining 2 sides of the cube will have no radiators, since we assume that the batteries and the payload are connected to those sides. Within Thermica, we start by using the geometric models for the cold case, SPOT-BOL, and end of life, SPOT-EOL. 
