@@ -82,10 +82,10 @@ $+Z_{s}$ &Telemetry  &  0   & 40 & 40 \\ \hline
 \section{Thermal Calculations for SPOT}
 In order to test and verify our previous calculations, we simulate the thermal behaviour of our SPOT satellite using Thermica to proof that the satellite fulfills the requirements of staying within $-5^{\circ}$ and $40^{\circ}$. We used the geometric models in the hot case and in the cold case for the satellite SPOT4,  which were already provided. Since we have more information now about the satellites compared to the first simplified cube simulations, we also have to adapt several files throughout the simulation. 
 
-\subection{Nodal network}
+\subsection{Nodal network}
 In thermica, interactions are described using the so called nodal network, where as an example the output of several simulation elements is linked to further simulation elements that need that data is input. Therefore, the nodal network gives an overview about the interactions of different simulation elemenets. In our case, the different equipments are assigned different node numbers, i.e. 3 to the $+Y_{s}$ side of the cube and thusd to the attitude control, 4 to the power supply side,  5 to the telemetry side and 6 to on-board computer. The $\pm X$ sides are left out since they are not considered in this thermical simulation as they are connected to the batteries and payload.
 
-\subsection{Radiative Phenomenon}  
-
-
+\subsection{Radiative Phenomenon}
+In the thermal simulation we consider the hot and the cold case, end of life and beginning of life. For setting up the simulation, several elements defining the mission, which depends on the case, the nodal descriptin, "Radiation", "Solar fluxes", "Planetary fluxes, "Skeleton" and finally "Solver" have to be connected within Thermica. However, we need to adapt several files before using the latter two elements in the simulation, so these are deactivated for the first run of the simulation.  
+The reason for that extra step is that the created file called "Spot.usr.nwk", which contains information about the radiative interactions of the several elements, assumes e.g. a radiator surface area of $1$ m$^{2}$ and other different values. However, to adapt the simulation to our case, we have to change these values in the file. In order to do so, one has to add the various values calculated above like the different fluxes for each radiator, heat capacities and dissipations. Once these changes are done, one can run the simulation with the last steps including the Thermica solver THERMOSOL.
 
