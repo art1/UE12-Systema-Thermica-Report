@@ -158,7 +158,7 @@ Telemetry &-10  &40 &-15 &50 &20 &70/0 & 0  \\ \hline
 \label{tab:equipmentspecification}
 \end{table}
 
-To place the equipment in the most efficient way, we exclude the $X$-axis, since the batteries, solar panels and the payload are going to be placed there. For the arrangement, we consider the rejection capacities of each of the sides in the hot case scenario and power consumptions of the equipments. Also, one has to consider the safe mode, which provides basic functions of the satellite by pointing the +$Z_{s}$ side towards the sun, which results in a strong solar flux. The resulting best arrangement is listed in table \ref{tab:arrangement}
+To place the equipment in the most efficient way, we exclude the $X$-axis, since the batteries, solar panels and the payload are going to be placed there. For the arrangement, we consider the rejection capacities of each of the sides in the hot case scenario and power consumptions of the equipment. Also, one has to consider the safe mode, which provides basic functions of the satellite by pointing the +$Z_{s}$ side towards the sun, which results in a strong solar flux. The resulting best arrangement is listed in table \ref{tab:arrangement}
 
 \begin{table}[H]
 \centering
@@ -187,7 +187,7 @@ $+Y_{s}$ &Attitude Control  &  303.6 & 20& 18000 \\ \hline
 $+Z_{s}$ &Telemetry & 325.5 & 20 &  18000 \\ \hline
 \end{tabular}
 \caption{Equipment with heat capacities and rejection capacities.}
-\label{tab:arrangement}
+\label{tab:heatcapacities}
 \end{table} 
 
 \subsection{Sizing of Radiators}
@@ -210,7 +210,7 @@ $+Z_{s}$ &Telemetry  &    0.22 \\ \hline
 
  
 \subsection{Dimensioning of Heating Power}
-After the sizing of the radiator areas is performed using the hot case, the additional heating power, that might be required in the cold case, has to be determined. For that, we calculate the power that is actually evacuated in the cold case using the heat capacities in the cold case and the radiator sizes calculated before. From that, we reduce the power that is dissipated by the equipment in the hot case as listed in table \ref{tab:equipmentspecification}. This difference is the power that is lost and results in a continuous cooling, so this difference in power has to be added by heating to avoid further cooling. We assume that the additional heating power avoids the equipment to drop below $-5^{\circ}$C, as defined in the cold case of the cube before Table lists the calculated evacuated power in this case, as well as the dissipated power in the hot case for each equipment and and the resulting required heating:
+After the sizing of the radiator areas is performed using the hot case, the additional heating power, that might be required in the cold case, has to be determined. For that, we calculate the power that is actually evacuated in the cold case using the heat capacities in the cold case and the radiator sizes calculated before. From that, we reduce the power that is dissipated by the equipment in the hot case as listed in table \ref{tab:equipmentspecification}. This difference is the power that is lost and results in a continuous cooling, so this difference in power has to be added by heating to avoid further cooling. We assume that the additional heating power avoids the equipment to drop below $-10^{\circ}$C, as defined in the cold case of the cube before table \ref{tab:powerlisted} lists the calculated evacuated power in this case, as well as the dissipated power in the hot case for each equipment and and the resulting required heating:
 
 
 \begin{table}[H]
@@ -224,21 +224,21 @@ $+Y_{s}$ &Attitude Control & 50 & 58 & 8  \\ \hline
 $+Z_{s}$ &Telemetry  &  0   & 40 & 40 \\ \hline
 \end{tabular}
 \caption{Power calculations in cold case}
-\label{tab:arrangement}
+\label{tab:powerlisted}
 \end{table}
 
 \section{Thermal Calculations for SPOT}
-In order to test and verify our previous calculations, we simulate the thermal behaviour of our SPOT satellite using Thermica to proof that the satellite fulfils the requirements of staying within $-5^{\circ}$ and $40^{\circ}$. We used the geometric models in the hot case and in the cold case for the satellite SPOT4,  which were already provided. Since we have more information now about the satellites compared to the first simplified cube simulations, we also have to adapt several files throughout the simulation. 
+In order to test and verify our previous calculations, we simulate the thermal behaviour of our SPOT satellite using Thermica to proof that the satellite fulfils the requirements of staying within $-10^{\circ}$ and $40^{\circ}$. We used the geometric models in the hot case and in the cold case for the satellite SPOT4,  which were already provided. Since we have more information now about the satellites compared to the first simplified cube simulations, we also have to adapt several files throughout the simulation. 
 
 \subsection{Nodal network}
-In thermica, interactions are described using the so called nodal network, where as an example the output of several simulation elements is linked to further simulation elements that need that data is input. Therefore, the nodal network gives an overview about the interactions of different simulation elements. In our case, the different equipments are assigned different node numbers, i.e. 3 to the $+Y_{s}$ side of the cube and thus to the attitude control, 4 to the power supply side,  5 to the telemetry side and 6 to on-board computer. The $\pm X$ sides are left out since they are not considered in this thermal simulation as they are connected to the batteries and payload.
+In Thermica, interactions are described using the so called nodal network connecting the different elements within the simulation. Therefore, the nodal network gives an overview about the interactions of different simulation elemenets. In our case, the different equipments are assigned different node numbers, i.e. 3 to the $+Y_{s}$ side of the cube and thus to the attitude control, 4 to the power supply side,  5 to the telemetry side and 6 to on-board computer. The $\pm X$ sides are left out since they are not considered in this thermical simulation as they are connected to the batteries and payload.
 
 \subsection{Radiative Phenomenon}
 In the thermal simulation we consider the hot and the cold case, end of life and beginning of life. For setting up the simulation, several elements defining the mission, which depends on the case, the nodal description, "Radiation", "Solar fluxes", "Planetary fluxes, "Skeleton" and finally "Solver" have to be connected within Thermica. However, we need to adapt several files before using the latter two elements in the simulation, so these are deactivated for the first run of the simulation.  
 The reason for that extra step is that the created file called "Spot.usr.nwk", which contains information about the radiative interactions of the several elements, assumes e.g. a radiator surface area of $1$ m$^{2}$ and other different values. However, to adapt the simulation to our case, we have to change these values in the file. In order to do so, one has to add the various values calculated above like the different fluxes for each radiator, heat capacities and dissipations. Once these changes are done, one can run the simulation with the last steps including the Thermica solver THERMOSOL.
 
 \section{Results}
-The results are shown in the figure \ref{fig:spothot} and describing the temperature for every node, i.e. side of the cube of SPOT, during the simulation for about 20 orbits. As one can see in the hot case, it is verified that the previous calculations of the radiator sizes avoid a heating above 40 degrees, since the temperatures converge towards that value over time. 
+The results are shown in the figure \ref{fig:spothot} and \ref{fig:spotcold} describing the temperature for every node, i.e. side of the cube of SPOT, during the simulation for about 20 orbits. As one can see in the hot case, it is verified that the previous calculations of the radiator sizes avoid a heating above 40 degrees, since the temperatures converge towards that value over time. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.15]{images/SPOT_hotcase_temperature.png}
@@ -250,7 +250,7 @@ The results are shown in the figure \ref{fig:spothot} and describing the tempera
 	\centering
 	\includegraphics[scale=0.15]{images/SPOT_coldcase_temperature.png}
 	\caption{Temperature of SPOT nodes in the cold case}
-	\label{fig:spothot}
+	\label{fig:spotcold}
 \end{figure}
 
 
