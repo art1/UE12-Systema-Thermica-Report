@@ -24,6 +24,7 @@
 \usepackage{listings}
 \usepackage{multirow}
 \usepackage{here}
+\usepackage{cleveref}
 
 
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
@@ -113,6 +114,8 @@
 \end{titlepage}
 %%%%%%%%%%%%%%%%%%% Titlepage end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 %%%%%%%%%%%%%%%%% include content %%%%%%%%%%%%%
 \include{content}
